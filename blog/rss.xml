@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>CodeIT-FS-5th-TIL Blog</title>
-        <link>https://codeit-fs-5th-til.github.io/blog</link>
+        <link>https://codeit-fs-5th-til.github.io/TIL/blog</link>
         <description>CodeIT-FS-5th-TIL Blog</description>
         <lastBuildDate>Sun, 23 Feb 2025 11:52:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,8 +10,8 @@
         <language>ko</language>
         <item>
             <title><![CDATA[sample]]></title>
-            <link>https://codeit-fs-5th-til.github.io/blog/sample</link>
-            <guid>https://codeit-fs-5th-til.github.io/blog/sample</guid>
+            <link>https://codeit-fs-5th-til.github.io/TIL/blog/sample</link>
+            <guid>https://codeit-fs-5th-til.github.io/TIL/blog/sample</guid>
             <pubDate>Sun, 23 Feb 2025 11:52:46 GMT</pubDate>
             <description><![CDATA[sample]]></description>
             <content:encoded><![CDATA[<p>sample</p>]]></content:encoded>

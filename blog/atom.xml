@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://codeit-fs-5th-til.github.io/blog</id>
+    <id>https://codeit-fs-5th-til.github.io/TIL/blog</id>
     <title>CodeIT-FS-5th-TIL Blog</title>
     <updated>2025-02-23T11:52:46.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://codeit-fs-5th-til.github.io/blog"/>
+    <link rel="alternate" href="https://codeit-fs-5th-til.github.io/TIL/blog"/>
     <subtitle>CodeIT-FS-5th-TIL Blog</subtitle>
-    <icon>https://codeit-fs-5th-til.github.io/img/favicon.ico</icon>
+    <icon>https://codeit-fs-5th-til.github.io/TIL/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[sample]]></title>
-        <id>https://codeit-fs-5th-til.github.io/blog/sample</id>
-        <link href="https://codeit-fs-5th-til.github.io/blog/sample"/>
+        <id>https://codeit-fs-5th-til.github.io/TIL/blog/sample</id>
+        <link href="https://codeit-fs-5th-til.github.io/TIL/blog/sample"/>
         <updated>2025-02-23T11:52:46.000Z</updated>
         <summary type="html"><![CDATA[sample]]></summary>
         <content type="html"><![CDATA[<p>sample</p>]]></content>
