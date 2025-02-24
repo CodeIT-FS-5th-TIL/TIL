@@ -1,0 +1,108 @@
+# React Hook Form
+
+React Hook Form은 React에서 폼을 관리할 때 효율적으로 사용할 수 있는 라이브러리다. 주로 폼 상태 관리와 유효성 검사를 쉽게 처리할 수 있게 도와준다. React에서 폼을 다룰 때 상태 관리와 렌더링을 최적화해준다.
+
+## 특징
+
+- 간단한 API: `useForm` 훅을 사용하여 폼을 관리할 수 있고, `register`, `handleSubmit`, `formState` 등을 통해 쉽게 폼을 제어할 수 있다. 복잡한 상태 관리를 줄여준다.
+- 성능 최적화: 입력값이 변경될 때마다 리렌더링되는 문제를 최소화해 성능을 개선할 수 있다.
+- 유효성 검사: 내장된 유효성 검사 기능을 제공하거나, 외부 라이브러리와 쉽게 통합할 수 있다.
+- 다양한 입력 방식 지원: 텍스트 입력, 체크박스, 라디오 버튼, 파일 업로드 등 다영한 입력을 다룰 수 있다.
+
+## 사용 방법
+
+### 폼 초기화
+
+- register: 폼 입력값을 등록하고 관리하는 역할을 하는 함수
+  - 기능
+    - 입력값 등록: 각 입력 필드를 React Hook Form에 등록해서 상태를 추적할 수 있다.
+    - 유효성 검사: 필드에 유효성 검사 규칙을 지정하여 자동으로 검사를 수행할 수 있다.
+  - 유의사항
+    - 각 입력 필드에 스프레드 문법(`…register`)를 사용해서 적용해야 한다.
+    - 유효성 검사 메시지는 `errors` 객체에서 확인할 수 있다.
+
+```jsx
+import React from "react";
+import { useForm } from "react-hook-form";
+
+const TodoForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data); // 폼 데이터 처리
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        {...register(
+          "todo", // 'todo'는 입력 값의 이름(폼 데이터의 key)
+          {
+            required: "Todo is required",
+            minLength: {
+              value: 3,
+              message: "Todo must be at least 3 characters long",
+            },
+          }
+        )}
+        placeholder="Enter a task"
+      />
+      {errors.todo && <p>{errors.todo.message}</p>}
+
+      <button type="submit">Add Todo</button>
+    </form>
+  );
+};
+```
+
+### 유효성 검사
+
+- `required`, `minLength`, `maxLength` 등 기본적인 유효성 검사 속성을 사용할 수 있다.
+- 커스텀 유효성 검사도 적용할 수 있다.
+
+```jsx
+<input
+  {...register("todo", {
+    required: "Please add a todo!",
+    minLength: {
+      value: 3,
+      message: "Todo must be at least 3 characters long",
+    },
+  })}
+/>
+```
+
+### 폼 제출 처리
+
+- `handleSubmit` 함수는 폼이 유효한지 확인하고, 유효하면 데이터를 처리한다.
+- `onSubmit` 함수에서는 데이터를 실제로 처리하거나 API 요청을 보내는 등의 작업을 할 수 있다.
+
+### 다양한 입력 타입
+
+체크 박스, 라디오 버튼, 셀렉트 박스,
+
+```jsx
+// 체크 박스
+<input
+  type="checkbox"
+  {...register('isCompleted')}
+/>
+
+// 라디오 버튼
+<input
+  type="radio"
+  value="high"
+  {...register('priority')}
+/>
+
+// 셀렉트 박스
+<select {...register('priority')}>
+  <option value="high">High</option>
+  <option value="medium">Medium</option>
+  <option value="low">Low</option>
+</select>
+```
