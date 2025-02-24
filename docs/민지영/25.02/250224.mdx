@@ -1,0 +1,23 @@
+## 타입스크립트
+
+### Next Page Router에서의 타입
+
+```js
+export async function getServerSideProps(context) {}
+```
+
+- SSR을 위해 context를 불러올 때 이 context의 타입은 GetServerSidePropsContext 이다
+
+따라서 export async function getServerSideProps(context: GetServerSidePropsContext) {} 이렇게 작성하면 된다.
+
+### 어디 import 하는가
+
+```js
+import { GetServerSidePropsContext } from "next";
+```
+
+여기서 한다.
+
+### 📝
+
+페이지 라우터 코드잇 인강을 타입스크립트로 공부하면서 새로 알게된 점을 작성하였습니다.
