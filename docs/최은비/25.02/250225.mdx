@@ -1,0 +1,93 @@
+# NEXT Hydration 너 뭔데?
+
+프론트엔드 코드실행 시 Unhandled Runtime Error 발생
+Error: "Hydration failed because the server rendered HTML didn't match the client."
+서버가 렌더링한 HTML이 클라이언트와 일치하지 않아 하이드레이션에 실패.
+
+- A server/client branch if (typeof window !== 'undefined').
+- Variable input such as Date.now() or Math.random() which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+브라우저 확장 프로그램때문에 발생할 수도 있다고한다.
+
+## 문제 원인
+
+- useMemo에서 randomUsernames로 랜덤 닉네임을 할당하는 부분에서
+  randomUsernames[Math.floor(Math.random() * randomUsernames.length)]
+  → 서버에서 렌더링할 때와 클라이언트에서 렌더링할 때 다른 닉네임이 할당될 가능성이 있음
+  → Hydration 오류 발생!
+
+```js
+const articlesWithUsername = useMemo(() => {
+  return results.map((article) => ({
+    ...article,
+    username:
+      article.username ||
+      randomUsernames[Math.floor(Math.random() * randomUsernames.length)],
+  }));
+}, [results]);
+```
+
+## 해결 방법
+
+- 클라이언트에서만 랜덤 닉네임을 부여하도록 useEffect를 사용
+- 서버에서는 항상 동일한 값을 유지해야 함
+- useMemo가 아니라 useEffect에서 setState를 이용해 클라이언트에서만 처리
+
+### 수정 전 코드
+
+```js
+import { useMemo } from "react";
+
+export default function ArticleList({ results = [] }) {
+  const articlesWithUsername = useMemo(() => {
+    return results.map((article) => ({
+      ...article,
+      username:
+        article.username ||
+        randomUsernames[Math.floor(Math.random() * randomUsernames.length)],
+    }));
+  }, [results]);
+    . . .
+```
+
+### 수정 후 코드
+
+```js
+import { useState, useEffect } from "react";
+
+export default function ArticleList({ results = [] }) {
+  const [articles, setArticles] = useState(results);
+
+  useEffect(() => {
+    const updatedArticles = results.map((article) => ({
+      ...article,
+      username:
+        article.username ||
+        randomUsernames[Math.floor(Math.random() * randomUsernames.length)],
+    }));
+    setArticles(updatedArticles);
+  }, [results]);
+  . . .
+```
+
+### 📝
+
+하이드레이션 미스매치에 대한 내용: https://react.dev/link/hydration-mismatch
+
+- 불가피하게 서버와 클라이언트간의 속성이나 텍스트 내용이 다른 경우, suppressHydrationWarning={true}를 추가하여 경고를 끌 수 있다고한다.
+  그치만 임시방편임으로 추천하는 방법은 아니라고..
+- ex)
+
+```js
+export default function App() {
+  return (
+    <h1 suppressHydrationWarning={true}>
+      Current Date: {new Date().toLocaleDateString()}
+    </h1>
+  );
+}
+```
