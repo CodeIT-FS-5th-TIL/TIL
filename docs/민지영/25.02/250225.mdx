@@ -1,0 +1,59 @@
+## axios와 Next
+
+### Next에서 fetch에서만 cache 사용할 수 있는거 아닌가요??
+
+- 아닙니다..! axios의 인터셉트 기능 못 잃어로서 구글링한 결과 해결법이 있었습니다!
+
+```js
+const getPosts = async () =>
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    cache: "force-cache",
+  }).then((res) => res.json());
+```
+
+이랬던게
+
+```js
+const getPosts = async () =>
+  axios
+    .get("https://jsonplaceholder.typicode.com/posts", {
+      adapter: "fetch",
+      fetchOptions: { cache: "force-cache" },
+    })
+    .then((res) => res.data);
+```
+
+요래 됐슴당
+
+이걸 타입스크립트로 만들면
+
+```js
+import { apiLocal } from "./axios";
+
+type FetchOptions =
+  | { cache: "no-store" | "no-cache" | "force-cache" }
+  | { next: { revalidate: number } }
+  | { next: { tags: string[] } };
+
+// GET 요청 함수
+export const fetchData = async <T>(
+  endPoint: string,
+  fetchOptions: FetchOptions = { cache: "no-store" },
+  params?: any // 임시로 any한 것뿐 본인 params에 맞춰서 타입 알잘딱 하면 됨
+): Promise<T | null> => {
+  try {
+    const response = await apiLocal.get(endPoint, {
+      adapter: "fetch",
+      fetchOptions,
+      params, // endPoint에 query를 넣는게 아닌 params로 추가하고 싶으면 이 코드 추가하면 됨
+    });
+    const result: T = response.data;
+    return result;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+```
+
+참고: https://velog.io/@bbbjihan/Next.js-%EC%BA%90%EC%8B%B1-%EB%95%8C%EB%AC%B8%EC%97%90-Axios-%EC%9D%B8%ED%84%B0%EC%85%89%ED%84%B0%EB%A5%BC-%ED%8F%AC%EA%B8%B0%ED%95%98%EB%9D%BC%EA%B3%A0-Axios-adapter-%EC%84%A4%EC%A0%95%EC%9C%BC%EB%A1%9C-Next.js-caching-%EC%A7%80%EC%9B%90-%EB%B0%9B%EA%B8%B0
