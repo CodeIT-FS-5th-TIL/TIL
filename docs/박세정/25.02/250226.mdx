@@ -1,0 +1,147 @@
+## GET, POST, PATCH, DELETE 그리고 PUT?
+
+그동안 HTTP Method로 GET, POST, PATCH, DELETE 총 4개만 있는 줄 알았는데, 오늘 게시글을 수정하고 등록하는 사이트를 만들어보면서 PUT이라는 개념을 새로 알게 되었습니다.
+PUT이 무엇인가 찾아보니 메서드의 종류가 생각보다 많다는 것을 알게 되었고, 이미 알고 있던 분들도 계시겠지만 GET, POST, PATCH, DELETE 4개의 세상에 갇혀 있다가 새로 알게 된 개념이다보니 신기하여 한 번 알아본 것을 배움을 위한 글로 적고자 합니다.
+
+## HTTP 메서드(Method)
+HTTP Method는 클라이언트와 서버 간 데이터를 주고 받을 때 사용되는 요청방식으로, 요청(Request)과 응답(Response) 데이터를 전송하는 방식입니다. CRUD(Create, Read, Update, Delete) 작업을 수행하는 데 중요한 역할을 합니다. 주요 메서드로는 가장 많이 쓰이고, 기존에 알고 있던 GET, POST, PATCH, DELETE 그리고 PUT 등이 있습니다. 각 메서드는 특정한 동작 방식을 가지고 있습니다.
+
+### 1. GET
+- 데이터 조회
+- GET 메서드는 특정 리소스의 표시를 요청합니다. GET을 사용하는 요청은 오직 데이터를 받기만 합니다.
+
+```
+// id=1인 사용자의 정보를 조회하는 예시
+
+GET /users/1 HTTP/1.1
+Host: example.com
+```
+
+### 2. POST
+- 새로운 데이터 생성
+- POST 메서드는 특정 리소스에 엔티티를 제출할 때 쓰입니다. 
+
+```
+// 새로운 사용자를 추가하는 예시
+
+POST /users HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+```
+
+### 3. PUT
+- 전체 수정
+- PUT은 기존 리소스를 완전히 대체하는 메서드로, 리소스를 대체(덮어쓰기), 해당 리소스가 없으면 생성
+- 멱등성 보장 (같은 요청을 여러 번 보내도 결과가 동일)
+- **언제 PUT을 써야 할까?**
+  - 리소스를 특정 ID로 식별할 수 있고, 해당 리소스를 전체적으로 교체하고 싶을 때
+  - PATCH를 사용하면 데이터가 일부만 변경되는 것과 다르게, 요청에 포함되지 않은 필드는 삭제되므로 기존 필드를 유지해야 하는 경우에는 PUT이 적절하지 않을 수 있음.
+
+```
+// 기존 id=1 사용자의 정보를 완전히 새로운 값으로 덮어쓰기
+// 기존 필드 중 포함되지 않은 필드는 사라질 수 있음
+
+PUT /users/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+```
+
++ 처음 알게 된 단어 **"멱등"**
+컴퓨터 과학에서 멱등하다는 것은 첫 번째 수행을 한 뒤 여러 차례 적용해도 결과를 변경시키지 않는 작업 또는 기능의 속성을 뜻해요. 즉, 멱등한 작업의 결과는 한 번 수행하든 여러 번 수행하든 같습니다.
+
+### 4. PATCH 
+- 부분 수정
+- PATCH 메서드는 리소스의 부분만을 수정하는 데 쓰입니다.
+
+```
+// 기존 id=1 사용자의 name만 변경, 다른 정보(ex. email)는 유지
+
+PATCH /users/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Alice"
+}
+
+```
+
+### 5. DELETE
+- 데이터 삭제
+
+```
+// id=1인 사용자 삭제
+
+DELETE /users/1 HTTP/1.1
+```
+
+### 6. HEAD
+- 헤더 정보만 조회
+- HEAD 메서드는 GET 메서드의 요청과 동일한 응답을 요구하지만, 응답 본문을 포함하지 않습니다.
+- 응답 크기를 확인하거나, 리소스가 존재하는지 체크할 때 사용
+
+```
+HEAD /users/1 HTTP/1.1
+```
+
+### 7. OPTIONS
+- 사용 가능한 메서드 조회
+
+```
+// 서버가 /users 엔드포인트에서 어떤 HTTP 메서드를 지원하는지 확인
+
+OPTIONS /users HTTP/1.1
+```
+
+### 8. TRACE
+- 서버에 요청을 보내고, 그 요청이 서버를 통해 어떻게 전달되는지를 추적할 수 있게 해주는 메서드
+- 요청이 서버를 어떻게 지나가는지 추적할 때 사용
+- 주로 **디버깅이나 문제 해결** 목적으로 사용
+
+```
+// 요청 예시
+
+TRACE /example HTTP/1.1
+Host: example.com
+
+```
+
+```
+// 서버의 응답 예시
+
+HTTP/1.1 200 OK
+Content-Type: message/http
+
+TRACE /example HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0 ...
+
+```
+
+### 9. CONNECT
+- 서버에 대한 직접 연결을 설정하는 데 사용
+- 클라이언트와 서버 간의 보안 연결을 생성
+- 프록시 서버를 통해 보안된 연결 (SSL/TLS) 을 설정할 때 사용
+- 클라이언트가 프록시 서버를 통해 특정 HTTPS 서버에 연결하고자 할 때, CONNECT 요청을 보냅니다.
+
+```
+// 클라이언트가 프록시 서버에게 www.example.com:443 포트로의 연결을 요청하는 예시
+
+CONNECT www.example.com:443 HTTP/1.1
+Host: www.example.com
+```
+
+```
+// 서버의 응답 예시
+
+HTTP/1.1 200 Connection Established
+```
+
+💬  새롭게 알게 된 단어(멱동성)도 있고, 6번 부터는 처음보는 메서드인데다가 바로 사용해볼만 한 메서드도 있어서 재미있게 알아봤습니다. mdn 사이트(https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)에는 9개의 HTTP 메서드가 있어 모두 알아보았는데, 추가로 또다른 메서드가 있다면 알려주세요!
