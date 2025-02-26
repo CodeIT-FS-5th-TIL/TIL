@@ -1,0 +1,36 @@
+
+## 트러블 슈팅
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bc518957-ced6-41d2-aaeb-754bc2ac7595/db5de03b-cf0f-48aa-b86c-2c564baf4087/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466VCYACPZJ%2F20250226%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250226T135022Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECQaCXVzLXdlc3QtMiJHMEUCIQCHZJGTOTWeVY8hVY2tgxbZiAueh5RK6JmVE45tRk8HSQIgB50Uu0%2BtcWWnjE%2BZUYfvKmq3nQoUk82f6hQ7yP9tm64q%2FwMIXRAAGgw2Mzc0MjMxODM4MDUiDE%2BAUR7%2BpHX0WErDZSrcA%2BvFGoS46U50BLYmDjV%2BpMXSL%2BUn%2Bq2bc5ySsmbeTu6TEe5MwQCDR1Jj2jFQdE%2F8Wc%2Biy6HNrfdb4Ri6gdGok4IiA0LOs5i9REWhb1QW%2BBNvhNKXBHECAiaVYpVhSGws3029274y3DWIxgwoLoewZ0Au7SmFHyJn%2B301AYijM4c%2FRKmRHoAQgUXAt2hZ9vnaERaeccKdlGI5EgmohC36ByZvcjWLcVUPmYVvm%2FjYyFZ7hsbpH%2Bpmz1%2FFmoiHUvHIlLeAuOnAMnIfA8WNZThL2DOTlBHLcg2K7DaZcFViKnU%2B12769t2sQ8kO%2BwxxD9A7FQGG%2BcaP8fPFlSF2cAP73E2m5PcBjJT34P21FZ1pt%2Bvn3OD7dO%2BCMapl%2FEUO8kfrbNBjCOTSBs9eqJrc4CcMk5U97C7pcBx8A2Z83KNVW3LPjuyBOf1aPJ0b8%2BFGz4XaK8BfVrhGveVhViCVYBk9EmdMumFmtGFaPkFsE%2FvX1cALEne2U2jyBC35Mujt%2B1zSC%2BGE4%2FuKhsFzRHJdrPuXesk1fKq9OnmJgGOZbCwBssJ%2Ft6s%2B5SC0%2FUYeB%2BL9bUIDdkTOGzn%2F4hkT0OF5RXEbDf4h8ef2w6wrnX3FXfKALtQZPPO1iEKcmQXpYqHVMMCI%2FL0GOqUBFgqCA2O8sk%2BvGmOCGzzKN1SnMJB7VjgYKJl1qcPc1rB%2F9yLEZj4IrmBnR9gGmYkJb9IXZEzBerfi7XaVftDjYAlP4QrL2D7IUS5zgyjgntRI8PQLVEGlrSYtuLBH4Om871VTcvVCsBX0QVADHq7u7S6sIpNEg95jgJjlBEkHWOlIPgrGQVsQZtWsu%2Fb59FFymu1EucDUrVhlkAnVQLvRCOG0iftF&X-Amz-Signature=01a5a068aef47810da20521c9f0994a71e70377bcf5af1f161292b15bc817a97&X-Amz-SignedHeaders=host&x-id=GetObject)
+
+
+RootLayout이 잘 있는데도 위와 같은 에러가 나는 문제
+
+
+### 시도해 본 방법
+
+- RootLayout에 <head> 태그 넣어보라고 함. - GPT → 실패
+- .next 파일 삭제 후, 다시 npm run dev 실행 → 실패
+
+### 원인
+
+- api 코드를 만들다가 app 폴더가 또 만들어졌었음..
+- src/app 폴더로 잡혀도 상위에 app 폴더가 있으면 Next.js가 app 폴더를 먼저 인식 함.
+
+### 해결 방법
+
+- app 폴더 삭제 후 api 폴더 이동!
+
+## 배운 내용
+
+- form, a 태그는 기본적으로 새로고침이 된다.
+- 여전히 mpa가 spa보다 휠씬 많다.
+	- mpa가 개발 속도 빠르기는 하다. (PHP)
+	- spa는 취업용!
+
+철학이 있는 신입. (위시켓 프론트앤드 리드)
+
+- 이력서에 강점 어필.
+	- 애매하게 말고
+- 나만의 끈질긴게 있어야 한다.
