@@ -1,0 +1,132 @@
+# router.push의 options — `shallow: true`
+
+`router.push`의 세번째 인자는 네비게이션 옵션을 설정하는 객체를 받는다. 옵션 중 `shallow: true`를 사용하면 URL만 변경되고, `getServerSideProps`가 다시 실행되지 않는다.
+
+```jsx
+router.push(
+  { pathname: "/dashboard", query: { modal: "open" } }, // 첫 번째 인자
+  undefined, // 두 번째 인자
+  { shallow: true } // 세 번째 인자 - options
+);
+```
+
+(참고로 options에는 shallow 말고도 scroll, locale 등 몇 가지 추가 옵션이 있다.)
+
+얼핏 생각해봤을 때 `shallow: true`가 왜 필요한지 떠오르지 않아서 예시를 찾아 보았다.
+
+## **`shallow: true`가 유용한 경우**
+
+- **페이지 전체를 다시 렌더링할 필요가 없을 때**
+- **URL을 변경하되, 클라이언트 사이드에서만 상태를 업데이트할 때**
+- **데이터를 다시 요청하지 않고, UI 상태만 바꿀 때**
+
+## 예시
+
+### 1. **모달을 열고 닫을 때**
+
+모달 상태를 URL에 반영하지만, **페이지 전체를 다시 렌더링하지 않고 싶을 때**
+
+```tsx
+router.push(
+  { pathname: router.pathname, query: { ...router.query, modal: "open" } },
+  undefined,
+  { shallow: true }
+);
+```
+
+- 이렇게 하면 **모달이 열렸다는 정보가 URL에 반영되지만, `getServerSideProps`가 실행되지 않음**.
+- 새로고침하면 URL을 보고 다시 모달을 열 수 있음.
+
+### 2. **탭을 변경할 때 (CSR 상태 유지)**
+
+- `shallow: true`를 쓰면 URL을 변경하면서도 **새로운 데이터 요청 없이 클라이언트에서 상태를 관리할 수 있음.**
+
+```tsx
+router.push(
+  { pathname: router.pathname, query: { tab: "comments" } },
+  undefined,
+  { shallow: true }
+);
+```
+
+- 이러면 페이지를 다시 렌더링하지 않고 탭 UI만 변경 가능!
+
+### **3. 페이지네이션에서 클라이언트 상태만 업데이트할 때**
+
+- 현재 페이지 번호를 URL에 반영하지만, **데이터 요청 없이 기존 데이터로 UI만 변경할 때**
+  (단, 서버에서 데이터를 새로 받아야 한다면 `shallow: true`를 빼야 함)
+
+```tsx
+router.push({ pathname: router.pathname, query: { page: 2 } }, undefined, {
+  shallow: true,
+});
+```
+
+- 이러면 **페이지 번호만 바뀌고, 서버 요청 없이 기존 리스트 유지 가능**.
+
+<aside>
+💡
+
+**정리**
+
+- SSR 데이터를 다시 받아야 하면 `shallow: true`를 사용하면 안 된다.
+- 하지만 클라이언트에서만 상태를 업데이트하고 싶다면 유용하다.
+- 모달, 탭 변경, 페이지네이션 UI 변경 같은 경우에 활용 가능!
+  </aside>
+
+## 더 자세한 예시 — 모달
+
+모달의 경우, 모달을 띄우고 닫는건 클라이언트 사이드에서 진행되니까 굳이 서버 요청이 필요하지 않다. 하지만 URL에는 모달 상태를 반영하기 위해 `shallow: true`를 사용한다.
+
+```tsx
+import { useRouter } from "next/router";
+
+export default function ExamplePage() {
+  const router = useRouter();
+  const isModalOpen = router.query.modal === "open";
+
+  const openModal = () => {
+    router.push(
+      { pathname: router.pathname, query: { ...router.query, modal: "open" } },
+      undefined,
+      { shallow: true } // 서버 요청 없이 URL만 변경
+    );
+  };
+
+  const closeModal = () => {
+    const queryParams = new URLSearchParams(router.query);
+    queryParams.delete("modal");
+
+    router.push(
+      {
+        pathname: router.pathname,
+        query: Object.fromEntries(queryParams.entries()),
+      },
+      undefined,
+      { shallow: true } // 서버 요청 없이 URL만 변경
+    );
+  };
+
+  return (
+    <div>
+      <button onClick={openModal}>모달 열기</button>
+
+      {isModalOpen && (
+        <div className="modal">
+          <p>모달 내용</p>
+          <button onClick={closeModal}>닫기</button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+- **모달 열 때**
+  - `router.push()`를 호출해서 **URL을 `...?modal=open`으로 변경**
+  - `shallow: true` 덕분에 **페이지 전체가 다시 렌더링되지 않음**
+  - 상태(`router.query.modal === "open"`)를 기반으로 **모달을 UI에서 표시**
+- **모달 닫을 때**
+  - `queryParams.delete("modal")`로 URL에서 `modal` 값을 제거
+  - `router.push()` 실행 → **URL이 변경되지만 서버 요청 없이 상태만 업데이트**
+  - **모달이 사라짐**
