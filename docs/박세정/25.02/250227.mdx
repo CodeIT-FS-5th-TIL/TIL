@@ -1,0 +1,62 @@
+## 어려웠던 반응형 웹 디자인, Tailwind CSS로 쉽게 해결!
+
+## 반응형 웹 디자인
+반응형 웹 디자인은 다양한 디바이스와 디바이스 크기에 대응하는 디자인 접근 방식으로, 태블릿, 휴대폰, 텔레비전, 시계 등 어떤 디바이스에서 콘텐츠를 보든 화면에 맞게 자동으로 조정할 수 있습니다.
+
+저는 그동안 반응형 웹 디자인에서 상당히 타협하고 포기할 때가 많았는데, 
+이번에 Tailwind CSS를 처음 써보면서 "반응형 웹 디자인이 이렇게 의도한 것처럼 보여질 수 있구나" Tailwind CSS가 참 편한 프레임워크임을 깨달아 앞으로의 Tailwind CSS 사용에 참고하고자 이번 글을 작성합니다.
+
+## Tailwind CSS
+Tailwind CSS는 유틸리티 클래스 기반의 CSS 프레임워크로, 미리 정의된 클래스를 조합하여 빠르게 스타일링할 수 있습니다.
+
+### 특징
+- 유틸리티 클래스 기반: bg-blue-500, text-xl, flex, p-4 등 개별적인 클래스를 조합하여 디자인 가능
+- CSS-in-JS 불필요: 별도의 CSS 파일 없이도 스타일 적용 가능
+- 반응형 디자인 편리: sm:, md:, lg: 등의 접두사를 붙여 화면 크기에 따라 스타일 조정 가능
+- 직관적인 네이밍: 클래스 이름만으로 스타일을 이해하기 쉬움
+
+### 반응형 웹 디자인 적용하는 법
+- Tailwind는 기본적으로 5가지 반응형 크기를 제공하고, 반응형 유틸리티 클래스(sm:, md:, lg:, xl:, 2xl:)를 접두사로 반응형 스타일 적용
+  - sm: 
+    - 최소 가로 너비 640px, 작은 화면(모바일)
+  - md: 
+    - 최소 가로 너비 768px, 중간 화면(태블릿)  
+  - lg: 
+    - 최소 가로 너비 1024px, 큰 화면(작은 노트북)
+  - xl: 
+    - 최소 가로 너비 1280px, 매우 큰 화면(일반 데스크톱)
+  - 2xl: 
+    - 최소 가로 너비 1536px, 초고해상도 화면
+
+```
+// 게시글이라는 페이지 제목과 글쓰기 버튼을 배치한 예시
+
+<div className="flex justify-between items-center lg:mb-[24px] md:mb-[48px] sm:mb-[16px] mb-[16px]">
+  <div className="text-gray font-bold text-[20px] leading-[23.87px]">게시글</div>
+  <button
+    onClick={() => router.push("/write-article/new")}
+    className="bg-blue text-white h-[42px] px-[23px] py-[12px] rounded-[8px] flex items-center justify-center"
+  >글쓰기</button>
+</div>
+```
+
+- grid, flex, hidden, block 등의 클래스로 레이아웃 조정
+  - md:hidden, sm:block 같은 클래스로 특정 화면 크기에서 보이거나 숨길 수 있음
+
+```
+// 브라우저 크기가 작아졌을 때, 드롭다운 내 아이콘이 변경되는 예시
+<img
+  src="/assets/ic_arrow_down.png"
+  alt="Arrow Down Icon"
+  className={`w-[24px] h-[24px] object-contain hidden md:block transition-transform ${isOpen ? "rotate-180" : ""}`}
+/>
+<img
+  src="/assets/ic_sort.png"
+  alt="Sort Icon"
+  className="w-[24px] h-[24px] object-contain md:hidden"
+/>
+```
+
+---
+
+💬 그동안 반응형 디자인으로 원하는대로 되지 않아 고생했는데, 마음먹은대로 보여주는 Tailwind CSS 최고! 👍
