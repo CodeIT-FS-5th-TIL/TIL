@@ -1,0 +1,107 @@
+## prisma migrate시 enum 타입설정으로 인한 오류
+
+### 에러 메시지
+
+"Invalid value for argument `resourceType`. Expected ResourceType."
+
+### 문제 원인
+
+댓글(comment) 스키마에 resourceType 필드를 만들어서 타입을 ResourceType(enum) 으로 주고 게시글(Article), 상품(Product)둘 중에 하나인 enum 타입으로 지정해주었는데,
+eunm 타입을 대문자로 지정해주지않아서 발생한 에러였다.
+
+- 처음에 작성했던 스키마
+
+```
+model Comment {
+  id           String        @id @default(uuid())
+  resourceType ResourceType?
+  resourceId   String
+  content      String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+enum ResourceType {
+  Product
+  Article
+}
+```
+
+- 수정 후
+
+```
+model Comment {
+  id           String        @id @default(uuid())
+  resourceType ResourceType?
+  resourceId   String
+  content      String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+enum ResourceType {
+  PRODUCT
+  ARTICLE
+}
+```
+
+## 그런데, 수정 후에도 콘솔을 찍어보니 여전히 소문자..!
+
+'resourceType: product' 로 찍히는 것이었다. 심지어 제일 첫글자도 소문자로 바뀜.
+
+범인은 바로
+
+## 🕵🏻‍♂️ url 경로에서 resourceType 값을 추출하는 extractResource(req) 함수
+
+```js
+const extractResource = (req) => {
+  const path = req.baseUrl; // 예: "/api/products" 또는 "/api/articles"
+  let resourceType;
+  let resourceId;
+
+  if (path.includes("/products")) {
+    resourceType = "product";
+    resourceId = req.params.id;
+  } else if (path.includes("/articles")) {
+    resourceType = "article";
+    resourceId = req.params.id;
+  } else {
+    throw new Error("Invalid resource type");
+  }
+
+  return { resourceType, resourceId };
+};
+```
+
+- req(요청 객체)를 받아서 resourceType(리소스 종류)과 resourceId(리소스 ID)를 추출하는 함수이다.
+  ex) URL 경로 (path)에 "/products"가 포함되어 있으면: resourceType을 "product"로 설정
+  바로 여기에 resourceType을 딱 소문자로 설정하라고 지정해놓았던 것이 문제가 된것이다.
+
+이 함수에서도 product와 article을 모두 대문자로 변경해주었다.
+이후 댓글 목록 불러오는 서비스 함수에 콘솔 찍어보니 잘 변경되어 에러 해결된 것 확인 ~!
+
+### fetchCommentList 함수 콘솔로그 확인
+
+```
+const fetchCommentList = async (cursor, limit, resourceType, resourceId) => {
+  console.log("🔍 resourceType :", resourceType); //resourceType 확인
+  const prismaResourceType = resourceType;
+
+  const take = parseInt(limit) || 10; // 한 번에 가져올 데이터 개수
+  const cursorOptions = cursor
+    ? { skip: 1, cursor: { id: cursor } } // 이전 데이터를 건너뜁니다.
+    : {};
+
+  return await prisma.comment.findMany({
+    ...cursorOptions,
+    take,
+    where: {
+      resourceType: prismaResourceType,
+      resourceId,
+    },
+    orderBy: { createdAt: "asc" },
+  });
+};
+```
+
+"🔍 resourceType : PRODUCT"
