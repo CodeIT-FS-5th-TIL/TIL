@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-김승우/25.02/250228" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">250228 | CodeIT-FS-5th-TIL</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://codeit-fs-5th-til.github.io/TIL/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://codeit-fs-5th-til.github.io/TIL/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://codeit-fs-5th-til.github.io/TIL/docs/김승우/25.02/250228"><meta data-rh="true" property="og:locale" content="ko"><meta data-rh="true" name="docusaurus_locale" content="ko"><meta data-rh="true" name="docsearch:language" content="ko"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="250228 | CodeIT-FS-5th-TIL"><meta data-rh="true" name="description" content="Auth"><meta data-rh="true" property="og:description" content="Auth"><link data-rh="true" rel="icon" href="/TIL/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://codeit-fs-5th-til.github.io/TIL/docs/김승우/25.02/250228"><link data-rh="true" rel="alternate" href="https://codeit-fs-5th-til.github.io/TIL/docs/김승우/25.02/250228" hreflang="ko"><link data-rh="true" rel="alternate" href="https://codeit-fs-5th-til.github.io/TIL/docs/김승우/25.02/250228" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/TIL/blog/rss.xml" title="CodeIT-FS-5th-TIL RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/TIL/blog/atom.xml" title="CodeIT-FS-5th-TIL Atom Feed"><link rel="stylesheet" href="/TIL/assets/css/styles.bc2236d3.css">
+<script src="/TIL/assets/js/runtime~main.5ac35f40.js" defer="defer"></script>
+<script src="/TIL/assets/js/main.e3de728d.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/TIL/img/logo.svg"><div role="region" aria-label="본문으로 건너뛰기"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">본문으로 건너뛰기</a></div><nav aria-label="메인" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="사이드바 펼치거나 접기" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/TIL/"><div class="navbar__logo"><img src="/TIL/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/TIL/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">CodeIT-FS-5th-TIL</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/TIL/docs/TIL/">TIL</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="어두운 모드와 밝은 모드 전환하기 (현재 밝은 모드)" aria-label="어두운 모드와 밝은 모드 전환하기 (현재 밝은 모드)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="맨 위로 스크롤하기" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="문서 사이드바" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/TIL/docs/TIL/">TIL</a><button aria-label="사이드바 분류 &#x27;TIL&#x27; 펼치기" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/TIL/docs/김민희/">김민희</a><button aria-label="사이드바 분류 &#x27;김민희&#x27; 펼치기" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/TIL/docs/김승우/">김승우</a><button aria-label="사이드바 분류 &#x27;김승우&#x27; 접기" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/TIL/docs/김승우/25.02/250224/">25.02</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/TIL/docs/김승우/25.02/250224/">250224</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/TIL/docs/김승우/25.02/250225">250225</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/TIL/docs/김승우/25.02/250226">250226</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/TIL/docs/김승우/25.02/250227">250227</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/TIL/docs/김승우/25.02/250228">250228</a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/TIL/docs/민지영/">민지영</a><button aria-label="사이드바 분류 &#x27;민지영&#x27; 펼치기" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/TIL/docs/박세정/">박세정</a><button aria-label="사이드바 분류 &#x27;박세정&#x27; 펼치기" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/TIL/docs/최은비/">최은비</a><button aria-label="사이드바 분류 &#x27;최은비&#x27; 펼치기" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="탐색 경로"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="홈" class="breadcrumbs__link" href="/TIL/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/TIL/docs/김승우/"><span itemprop="name">김승우</span></a><meta itemprop="position" content="1"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">25.02</span><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">250228</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">이 페이지에서</button></div><div class="theme-doc-markdown markdown"><header><h1>250228</h1></header><h3 class="anchor anchorWithStickyNavbar_LWe7" id="auth">Auth<a href="#auth" class="hash-link" aria-label="Auth에 대한 직접 링크" title="Auth에 대한 직접 링크">​</a></h3>
+<ul>
+<li>Authentication(인증)<!-- -->
+<ul>
+<li>리퀘스트를 보내 사용자를 팡</li>
+</ul>
+</li>
+<li>Authorization(인가)<!-- -->
+<ul>
+<li>리퀘스트에 따라서 가능한지 판별?</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="쿠키-세션">쿠키 세션<a href="#쿠키-세션" class="hash-link" aria-label="쿠키 세션에 대한 직접 링크" title="쿠키 세션에 대한 직접 링크">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="쿠키">쿠키<a href="#쿠키" class="hash-link" aria-label="쿠키에 대한 직접 링크" title="쿠키에 대한 직접 링크">​</a></h3>
+<ul>
+<li>브라우저(클라이언트)에 저장되는 작은 조각.</li>
+<li>텍스트 파일로 저장 됨.</li>
+<li>만료 기간을 설정할 수 있음.</li>
+<li>
+<u><strong>HTTP 요청 마다 자동으로 서버에 전송됨.</strong></u>
+</li>
+<li>보안 약하여 민감한 데이터를 저장하면 안됨.</li>
+<li>쿠키는 도메인에 따라 제한 됨. (youtube.com가 준 쿠키는 youtube에서만 전송됨)</li>
+</ul>
+<p>사용예시</p>
+<ul>
+<li>로그인 유지</li>
+<li>장바구니 정보 저장</li>
+<li>웹사이트 방문 기록, 사용자 설정(다크모드, 언어등)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="세션">세션<a href="#세션" class="hash-link" aria-label="세션에 대한 직접 링크" title="세션에 대한 직접 링크">​</a></h3>
+<ul>
+<li>서버의 특정 메모리의 저장됨.<!-- -->
+<ul>
+<li>서버의 용량보다 그 이상으로 저장할 수 없음.</li>
+</ul>
+</li>
+<li>각 클라이언트(브라우저)에 고유 세션 ID를 부여</li>
+<li>쿠키에 비해 속도가 느림.</li>
+<li>클라이언트가 로그아웃을 하거나 일정시간을 지나면 세션이 없어짐.</li>
+<li></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="쿠키와-세션-예제">쿠키와 세션 예제<a href="#쿠키와-세션-예제" class="hash-link" aria-label="쿠키와 세션 예제에 대한 직접 링크" title="쿠키와 세션 예제에 대한 직접 링크">​</a></h3>
+<p>로그인</p>
+<ul>
+<li>유저가 로그인 요청을 서버에게 보낸다.</li>
+<li>서버는 아이디와 비번을 확인하고 맞으면 세션DB에 세션ID와 유저 정보를 저장한다.</li>
+<li>응답을 할 때 쿠키에 세션 ID를 보내준다 → 브라우저에 세션 ID가 저장됨.</li>
+<li>다른 요청을 보낼 때, 쿠키에 세션ID가 저장되어 있기 때문에 계속 어떤 유저인지를 알 수 있음.</li>
+</ul>
+<p>참고자료</p>
+<ul>
+<li><a href="https://youtu.be/OpoVuwxGRDI?si=a-s2eIbmliUo0yG5" target="_blank" rel="noopener noreferrer">https://youtu.be/OpoVuwxGRDI?si=a-s2eIbmliUo0yG5</a></li>
+<li><a href="https://www.youtube.com/watch?v=tosLBcAX1vk" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=tosLBcAX1vk</a></li>
+<li><a href="https://velog.io/@octo__/%EC%BF%A0%ED%82%A4Cookie-%EC%84%B8%EC%85%98Session" target="_blank" rel="noopener noreferrer">https://velog.io/@octo__/쿠키Cookie-세션Session</a></li>
+</ul>
+<h1>코드잇 강의</h1>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="쿠키-인증">쿠키 인증<a href="#쿠키-인증" class="hash-link" aria-label="쿠키 인증에 대한 직접 링크" title="쿠키 인증에 대한 직접 링크">​</a></h2>
+<ul>
+<li>쿠키는 도메인 기반으로 구분되는데 구글 이메일, 구글 캘린더 등 같은 서비스(도메인)끼리는 공유한다.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="쿠키-보안">쿠키 보안<a href="#쿠키-보안" class="hash-link" aria-label="쿠키 보안에 대한 직접 링크" title="쿠키 보안에 대한 직접 링크">​</a></h2>
+<ul>
+<li>HTTPS에서 쿠키에 Secure 옵션을 설정할 수 있음.</li>
+<li>HttpOnly를 쿠키에 넣으면 클라이언트는 JS코드로 해당 쿠키에 접근할 수 없음.</li>
+<li>SameSite 설정으로 CSRF 공격을 막을 수 있음.<!-- -->
+<ul>
+<li>CSRF 공격 - 이미 저장된 세션ID로 비번 변경, 아이디 삭제등 악의적인 행동을 하는 것.</li>
+</ul>
+</li>
+</ul>
+<div class="language-typescript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-typescript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Set</span><span class="token operator" style="color:#393A34">-</span><span class="token plain">Cookie</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> cookie_name</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">cookie_value</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> Secure</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> HttpOnly</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> SameSite</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">Lax</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="authorization-해더-인증">Authorization 해더 인증<a href="#authorization-해더-인증" class="hash-link" aria-label="Authorization 해더 인증에 대한 직접 링크" title="Authorization 해더 인증에 대한 직접 링크">​</a></h2>
+<ul>
+<li>쿠키가 아니라 HTTP에 Authorization 해더에 세션 ID를 넣어서 보낼 수 있음.</li>
+<li>장점<!-- -->
+<ul>
+<li>개발자가 원할 때, 인증을 할 수도 안할 수도 있음. (쿠키는 항상 전송됨)</li>
+<li>다른 도메인에서도 사용 가능</li>
+</ul>
+</li>
+<li>쿠키를 사용하고 싶지 않을 때는 로컬 스토리지도 대안 중 하나.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="세션-기반-인증">세션 기반 인증<a href="#세션-기반-인증" class="hash-link" aria-label="세션 기반 인증에 대한 직접 링크" title="세션 기반 인증에 대한 직접 링크">​</a></h2>
+<ul>
+<li>특정 사용자가 사이트를 방문하면(서버 요창) 서버 세션에 ip주소, 마지막 방문, 브라우저 종류, 유저 아이디를 저장하고 세션ID를 발급해서 브라우저에 넘겨준다.</li>
+<li>사용자가 다시 방문하면 세션 ID를 통해서 서버가 방문했던 유저인지 아닌지 판단을 하고 이에 따른 응답을 한다.</li>
+<li>특정 시간이 지나거나 로그아웃 요청을 보내면, 특정 세션 ID를 만료시킨다.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="토큰-기반-인증">토큰 기반 인증<a href="#토큰-기반-인증" class="hash-link" aria-label="토큰 기반 인증에 대한 직접 링크" title="토큰 기반 인증에 대한 직접 링크">​</a></h2>
+<ul>
+<li>서버 → 클라, 바디에 넣어서 전달.</li>
+<li>클라 → 서버, 해더에 넣어서 전달.</li>
+<li>서버는 유저와 만료일을 확인 후, 사용자를 특정함.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="refresh-토큰">Refresh 토큰<a href="#refresh-토큰" class="hash-link" aria-label="Refresh 토큰에 대한 직접 링크" title="Refresh 토큰에 대한 직접 링크">​</a></h2>
+<ul>
+<li>access 토큰 외에 refresh토큰 access토큰을 재발급 받을 수 있음.</li>
+<li>access토큰 보다 refresh 토큰의 만료 일자를 더 길게 잡고 access토큰이 만료되면 refresh토큰으로 새로운 access토큰을 발급.</li>
+<li>토큰 만료시 이메일과 비번을 서버에 요청하는 것보다 비교적 보안에 강함.</li>
+<li>그러면 refresh 토큰도 누가 훔쳐가면 어떡하지?</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="jwt">JWT<a href="#jwt" class="hash-link" aria-label="JWT에 대한 직접 링크" title="JWT에 대한 직접 링크">​</a></h2>
+<p><img decoding="async" loading="lazy" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/bc518957-ced6-41d2-aaeb-754bc2ac7595/ad94a4ab-eeff-4484-956a-2faf2b33759e/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB4663LIEX77U%2F20250228%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250228T150039Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFcaCXVzLXdlc3QtMiJIMEYCIQCY8W1DLB6ZzJ5iwUsn9dQT3gEW40rX4fRZD%2B0ezWpsqQIhAK3g4fm0ubjhZn0ujpkKcercz0nf1kVOAXPKwW%2FUUd%2B7KogECJD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgyQY5cgs5OtHUZKMI8q3AOuBRFTHLXhIhDw47c6zdOD7OUxFQW1RBXnE6znBqC4tn3P0Vs2InU%2BL%2FF%2Fjxrv8PxORDQzaTv37UEkT4oXFRU0sQfjSHAWR7AzBdmXbAtC2U7Sa8BETmV5AI7TjjqlL%2FkwdX6Y%2FHjFtLJp72XYt%2BEDJeE7uOPRKebY0RCPNzQ%2FMdB4o5Ekh6J7eagvgl5SMD0SMKLq8UQz2l7cJtn8EQsCFA4bBIn%2BeeEvLIycw6Uqmljt%2F%2FyvrPyFJKra8TuY2tAjgbQb71jtOIEXHIdVt2QXL9gNw0DQGz91KPWWC2dIQ787Rm0aa1zmPhU6z2WXmb1E0eOVxLoZUyvaJjGKEYFQgVK3LGoItPjYLBNc%2ByrvnpmJIxvFu3jHEhvNFEglxPIqQG%2Bn4cMVSjC7I4lwsPf%2FGaZqvCaYESqrZ%2BtBnpNdZFMzDNPmsOeeRDHb1xerz7%2Bbt%2BlWjtOOPnpDQvQu%2BBgKoJV4jAdwU0%2BNxYpDAFaIlKFIf9KAvGSUQFzcPEOChJ1iXNbCHZc%2Fz4Lp2pQ9csqrmhr5FGakL1mmCCfgCHVNA47JeZ6l0QWzTMBAJszzKAtjS0OyNtDVDY3VdI3CNF4re9%2F5Mh%2FFu64TZOSpM1xSU7e%2BSr%2BhmSWiUoAx8zDBkIe%2BBjqkAccNNhFW18YwYcjcnR2Z5dUrrarIjE4zFcEt894LHRG9P1vjNj%2FWIxzZ1PRSFuQg95AKvDlCU1lxPcXUI02iAGQ6hUh4iwRU8SD%2FFxBUDUn58pxzRp7o5lej%2BLWGxGAh8llkazpCG5hGDzHsgAnB7dF2xwWy6qrnaoKmMS7nhntkyYvn%2F5OPhzmM0smU1B80Mr5byyHIXDa6jZeRDyWA4WEiCepA&amp;X-Amz-Signature=cb1e3c2a001645cbe04fca3a67f4d5a546669f1a85fefa0a93f2920a8041d6e0&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject" alt="image.png" class="img_ev3q"></p>
+<ul>
+<li>Header - Base64 인코딩함.</li>
+<li>PayLoad - 만료일, 유저 아이디 등등<!-- -->
+<ul>
+<li>짧은게 좋음.</li>
+<li>공식 이름이 있음. (exp, iat, jti 등_</li>
+</ul>
+</li>
+<li>Signature<!-- -->
+<ul>
+<li>해더, 페이로드, 시크릿 키를 활용해서 암호화함.</li>
+</ul>
+</li>
+<li>Header, PayLoad는 암호화 되지는 않음. - 보안 주의</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="인가authorization">인가(Authorization)<a href="#인가authorization" class="hash-link" aria-label="인가(Authorization)에 대한 직접 링크" title="인가(Authorization)에 대한 직접 링크">​</a></h2>
+<ul>
+<li>Auth라고 해서 인증 인가라고 불리지만, 엄연히 다른 개념<!-- -->
+<ul>
+<li>인증 - 누구인지 파악</li>
+<li>인가 - 권한이 있는지 파악</li>
+</ul>
+</li>
+<li>특정 요정을 보냈을 때, 이것을 처리해도 되는 사용자인지를 확인하는 개념</li>
+<li>예시 - 삭제 요청을 보냈을 때, 관리자이거나 해당 유저인지 확인 → 맞으면 삭제, 아니면 거부</li>
+</ul>
+<p>Authorization 해더는 엄밀히 말하면 인가를 위한 것인데, 인증을 위해서 사용하고 있음</p>
+<ul>
+<li>아마 web 설계자가 잘못 설계하고 지금 수정하면 너무 복잡해지기 때문에 수정하지 않은 것 같음.</li>
+</ul>
+<h1>OAuth</h1>
+<ul>
+<li>Open Authoriazation</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="openid-connect">OpenID Connect<a href="#openid-connect" class="hash-link" aria-label="OpenID Connect에 대한 직접 링크" title="OpenID Connect에 대한 직접 링크">​</a></h2>
+<ul>
+<li></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/김승우/25.02/250228.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>페이지 편집</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href="/TIL/docs/김승우/25.02/250227"><div class="pagination-nav__sublabel">이전</div><div class="pagination-nav__label">250227</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/TIL/docs/민지영/"><div class="pagination-nav__sublabel">다음</div><div class="pagination-nav__label">민지영</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#auth" class="table-of-contents__link toc-highlight">Auth</a></li><li><a href="#쿠키-세션" class="table-of-contents__link toc-highlight">쿠키 세션</a><ul><li><a href="#쿠키" class="table-of-contents__link toc-highlight">쿠키</a></li><li><a href="#세션" class="table-of-contents__link toc-highlight">세션</a></li><li><a href="#쿠키와-세션-예제" class="table-of-contents__link toc-highlight">쿠키와 세션 예제</a></li></ul></li><li><a href="#쿠키-인증" class="table-of-contents__link toc-highlight">쿠키 인증</a></li><li><a href="#쿠키-보안" class="table-of-contents__link toc-highlight">쿠키 보안</a></li><li><a href="#authorization-해더-인증" class="table-of-contents__link toc-highlight">Authorization 해더 인증</a></li><li><a href="#세션-기반-인증" class="table-of-contents__link toc-highlight">세션 기반 인증</a></li><li><a href="#토큰-기반-인증" class="table-of-contents__link toc-highlight">토큰 기반 인증</a></li><li><a href="#refresh-토큰" class="table-of-contents__link toc-highlight">Refresh 토큰</a></li><li><a href="#jwt" class="table-of-contents__link toc-highlight">JWT</a></li><li><a href="#인가authorization" class="table-of-contents__link toc-highlight">인가(Authorization)</a></li><li><a href="#openid-connect" class="table-of-contents__link toc-highlight">OpenID Connect</a></li></ul></div></div></div><div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/TIL/docs/TIL">TIL</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 My Project, Inc. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
